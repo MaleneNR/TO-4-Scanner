@@ -14,7 +14,7 @@ public class GuessANumber {
     }
 
 
-    private static void makeAGuess(int guessedNumber){
+    private static void makeAGuess(){
 	Scanner scan = new Scanner(System.in); 	
 
     if (scan.hasNextDouble()){
@@ -24,19 +24,15 @@ public class GuessANumber {
             System.out.println("That is the correct number!");
         } else if (input < rnd_number) {
             System.out.println("Try again, your guess is too low");
-        } else {
+            makeAGuess();
+        } else if (input > rnd_number) {
             System.out.println("Try again, your guess is too high");
+            makeAGuess();
+        } else{
+            System.out.println("X");
         }
-    } else{}
-
-
-        // use hasNextDouble to check if input is numeric, 
-        // if so...
-	// Read user input
-        // --Compare it with the random number
-        // --Let the user know the result of the comparison
-        // Let the user try again by calling this method recursively
-        // Help the user by revealing wether the guess was lower or higher than the target number
-        // if input was not numeric show an error message and call this method recursively
+    } else{ 
+        System.out.println("Input isn't numeric");
+    }
     }
 }
